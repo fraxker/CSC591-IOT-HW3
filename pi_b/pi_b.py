@@ -20,7 +20,7 @@ class PI_B:
 
         self.client_name = "RaspberryPiB"
         self.client = paho.Client(self.client_name)
-        self.client.connect(None)
+        self.client.connect("192.168.1.101")
         self.client.on_message=self.on_message
         self.client.loop_start()
         atexit.register(self.client.loop_stop)

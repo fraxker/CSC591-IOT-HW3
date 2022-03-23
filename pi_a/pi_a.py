@@ -16,7 +16,7 @@ class PI_A:
 
         self.client_name = "RaspberryPiA"
         self.client = paho.Client(self.client_name)
-        self.client.connect(None)
+        self.client.connect("192.168.1.101")
         self.client.on_message=self.on_message
         self.pi_status_topic = "Status/" + self.client_name
         self.client.will_set(self.pi_status_topic, payload=self.offline_str, retain=True, qos=2)
