@@ -32,9 +32,9 @@ class PI_A:
 
     def on_message(self, client, userdata, message):
         command = str(message.payload.decode("utf-8"))
-        if message.topic is self.sensor_topic:
+        if message.topic == self.sensor_topic:
             self.old_ldr = float(command)
-        elif message.topic is self.threshold_topic:
+        elif message.topic == self.threshold_topic:
             self.old_pot = float(command)
         else:
             raise Exception("Unreconized topic: " + message.topic)

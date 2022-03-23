@@ -25,13 +25,13 @@ class PI_C:
         self.status_payload = "TurnOff"
   
     def on_message(self, client, userdata, message):
-        if message.topic is self.sensor_topic:
+        if message.topic == self.sensor_topic:
             self.light_payload = float(message.payload.decode("utf-8"))
             self.publish_command()
-        elif message.topic is self.threshold_topic:
+        elif message.topic == self.threshold_topic:
             self.threshold_payload = float(message.payload.decode("utf-8"))
             self.publish_command()
-        elif message.topic is self.light_status_topic:
+        elif message.topic == self.light_status_topic:
             self.status_payload = str(message.payload.decode("utf-8"))
 
     def publish_command(self):

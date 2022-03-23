@@ -6,7 +6,7 @@ def on_message(client, userdata, message):
     now = datetime.now()
 
     current_time = now.strftime("%H:%M:%S")
-    print(message.topic, ": ", str(message.payload.decode("utf-8")), current_time)
+    print(message.topic, ": ", str(message.payload.decode("utf-8")), current_time, flush=True)
 
 if __name__ == "__main__":
     client = paho.Client("Laptop 2")

@@ -6,9 +6,9 @@ from gpiozero import LED
 class PI_B:
     def __init__(self):
 
-        self.led1 = LED(0)
-        self.led2 = LED(2)
-        self.led3 = LED(3)
+        self.led1 = LED(14)
+        self.led2 = LED(15)
+        self.led3 = LED(18)
         self.led1.off()
         self.led2.off()
         self.led3.off()
@@ -35,24 +35,24 @@ class PI_B:
 
     def on_message(self, client, userdata, message):
         command = str(message.payload.decode("utf-8"))
-        if message.topic is self.pia_topic:
-            if command is self.online_str:
+        if message.topic == self.pia_topic:
+            if command == self.online_str:
                 self.led2.on()
-            elif command is self.offline_str:
+            elif command == self.offline_str:
                 self.led2.off()
             else:
                 raise Exception("Invalid command from rpi a: "+ command)
-        elif message.topic is self.pic_topic:
-            if command is self.online_str:
+        elif message.topic == self.pic_topic:
+            if command == self.online_str:
                 self.led3.on()
-            elif command is self.offline_str:
+            elif command == self.offline_str:
                 self.led3.off()
             else:
                 raise Exception("Invalid command from rpi c: "+ command)
-        elif message.topic is self.light_topic:
-            if command is self.turn_on_str:
+        elif message.topic == self.light_topic:
+            if command == self.turn_on_str:
                 self.led1.on()
-            elif command is self.turn_off_str:
+            elif command == self.turn_off_str:
                 self.led1.off()
             else:
                 raise Exception("Invalid command from light status: "+ command)
