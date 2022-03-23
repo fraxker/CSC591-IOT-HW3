@@ -6,7 +6,7 @@ from gpiozero import LightSensor
 
 class PI_A:
     def __init__(self):
-        self.arduino = serial.Serial(port='COM4', baudrate=115200, timeout=.1)
+        self.arduino = serial.Serial(port='ttyACM0', baudrate=115200, timeout=.1)
         self.ldr = LightSensor(18)
 
         self.offline_str = "offline"
